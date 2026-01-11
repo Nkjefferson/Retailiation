@@ -17,7 +17,10 @@ func _process(_delta):
 func set_card(card):
 	card_scene = card
 	update_sprite()
-	
+
+func is_empty() -> bool:
+	return card_scene == null
+
 func update_sprite():
 	if card_scene != null:
 		super.set_card(card_scene)
@@ -32,4 +35,3 @@ func _on_panel_mouse_entered():
 func _on_panel_mouse_exited():
 	in_focus = false
 	set_selected(false)
-

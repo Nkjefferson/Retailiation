@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bqgq34mkxbcsv"]
 
-[ext_resource type="Script" path="res://characters/enemies/strong_enemy/strong_enemy.gd" id="1_phh45"]
+[ext_resource type="Script" uid="uid://bkjrkuy85hdd6" path="res://characters/enemies/strong_enemy/strong_enemy.gd" id="1_phh45"]
 [ext_resource type="Texture2D" uid="uid://dedd1c4y4a4lf" path="res://assets/art/entities/enemy_neckbeard.png" id="2_b0h8k"]
-[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_w3x1g"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://views/damage_taken.tres" id="2_w3x1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kkijf"]
 resource_local_to_scene = true

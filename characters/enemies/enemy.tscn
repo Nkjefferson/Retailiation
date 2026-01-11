@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b362ikkvilv7h"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_uir6y"]
-[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_utecw"]
+[ext_resource type="Script" uid="uid://cyl0d4wb2my3" path="res://characters/enemies/enemy.gd" id="1_uir6y"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://views/damage_taken.tres" id="2_utecw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jft5"]
 resource_local_to_scene = true

@@ -6,6 +6,7 @@ extends Node2D
 @export var juice : PackedScene = preload("res://environment/consumables/gamer_juice/gamer_juice.tscn")
 @export var pack : PackedScene = preload("res://environment/consumables/booster_pack/booster_pack.tscn")
 @export var stage : PackedScene = preload("res://environment/stages/stage_one/stage_one.tscn")
+@export var shop : PackedScene = preload("res://views/loadout_menu/loadout_menu.tscn")
 
 signal score_update
 
@@ -31,19 +32,32 @@ func _ready():
 	self.connect("score_update",$Player.player_hud._update_score)
 	rng = RandomNumberGenerator.new()
 	self.z_index = 0
+	# Give some initial gold on the first level:
+	GameState.player_currency = 10
+	# Start the level
 	start_level()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("escape") and not game_over:
 			pause_level()
+	if Input.is_action_just_pressed("DEBUG_ACTION") and not game_over:
+			_on_complete_level(null)
 
 func start_level():
+	$Player.spawn()
 	current_stage.start()
+
 
 func pause_level():
 	var pause_screen = load("res://views/pause_menu/pause_menu.tscn").instantiate()
 	self.add_child(pause_screen)
 	pause_screen.connect("resume",resume_level)
+	get_tree().paused = true
+
+func load_shop():
+	var shop_screen = load("res://views/loadout_menu/loadout_menu.tscn").instantiate()
+	self.add_child(shop_screen)
+	shop_screen.connect("continue_level", move_to_next_level)
 	get_tree().paused = true
 
 func stop_level():
@@ -71,7 +85,7 @@ func update_score(value):
 
 func _on_enemy_death(enemy):
 	update_score(enemy.score_value)
-	
+
 	var drop_chance = rng.randf()
 	if drop_chance < coin_percent:
 		var coin = gold.instantiate()
@@ -85,10 +99,15 @@ func _on_enemy_death(enemy):
 		var bp = pack.instantiate()
 		self.call_deferred("add_child", bp)
 		bp.spawn(enemy.global_position, 0)
-		
 
 func _on_complete_level(enemy):
-	update_score(enemy.score_value)
+	if enemy != null:
+		update_score(enemy.score_value)
+	$Player.save_state()
+	self.call_deferred("load_shop")
+
+func move_to_next_level():
+	get_tree().paused = false
 	self.call_deferred("set_stage",load("res://environment/stages/stage_two/stage_two.tscn"))
 	self.call_deferred("start_level")
 
@@ -106,4 +125,3 @@ func _on_game_over():
 		var game_over_menu = game_over_scene.instantiate()
 		self.add_child(game_over_menu)
 		game_over_menu.update_metrics(score)
-

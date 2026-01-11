@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://caera8evwn5y3"]
 
-[ext_resource type="Script" path="res://characters/player/inventory/inventory.gd" id="1_a2g51"]
+[ext_resource type="Script" uid="uid://wcskx6ssnk3h" path="res://characters/player/inventory/inventory.gd" id="1_a2g51"]
 [ext_resource type="PackedScene" uid="uid://cgkusoo418s4v" path="res://characters/player/cards/basic_card/basic_card.tscn" id="2_2h6i5"]
 [ext_resource type="PackedScene" uid="uid://cai5r3al5226r" path="res://characters/player/cards/piercing_card/piercing_card.tscn" id="3_1o3k5"]
 [ext_resource type="PackedScene" uid="uid://cea66o0vd2v5n" path="res://characters/player/cards/triple_card/triple_card.tscn" id="4_qmwpa"]

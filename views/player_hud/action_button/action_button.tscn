@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw0a0adakonek"]
 
-[ext_resource type="Script" path="res://views/player_hud/action_button/action_button.gd" id="1_b2dwe"]
+[ext_resource type="Script" uid="uid://c43mxbw0b4817" path="res://views/player_hud/action_button/action_button.gd" id="1_b2dwe"]
 [ext_resource type="PackedScene" uid="uid://crhd1dqsv6w31" path="res://views/tooltip_pane/tooltip_pane.tscn" id="2_e5ap7"]
 
 [node name="ActionButton" type="Control"]

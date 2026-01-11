@@ -34,7 +34,7 @@ func set_sprite_scale(new_scale):
 	sprite_scale = new_scale
 	if sprite:
 		sprite.scale = Vector2(sprite_scale, sprite_scale)
-		
+
 func set_card(card_scene):
 	if card_scene:
 		if scene:
@@ -71,3 +71,11 @@ func set_sprite_material(new_material):
 
 func _on_animation_timer_timeout():
 	sprite.frame = (sprite.frame + 1) % sprite_frame_count
+
+func clear():
+	if scene:
+		scene.queue_free()
+	scene = null
+	sprite = null
+	$AnimationTimer.stop()
+	$Panel.add_theme_stylebox_override("panel",unselected_style)

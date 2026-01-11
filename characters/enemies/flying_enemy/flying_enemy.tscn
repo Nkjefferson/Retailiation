@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bd6d1s68uchgg"]
 
-[ext_resource type="Script" path="res://characters/enemies/flying_enemy/flying_enemy.gd" id="1_ym7nv"]
-[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_tdxfm"]
+[ext_resource type="Script" uid="uid://b5vfg0c0xq2w6" path="res://characters/enemies/flying_enemy/flying_enemy.gd" id="1_ym7nv"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://views/damage_taken.tres" id="2_tdxfm"]
 [ext_resource type="Texture2D" uid="uid://ccfkf1mm36eeb" path="res://assets/art/entities/enemy_fedora.png" id="2_xeq5q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5atpr"]

@@ -78,7 +78,7 @@ func update_inventory_from_grid():
 	for grid_element in inventory_grid.get_children():
 		new_inventory.append(grid_element.get_node("SelectableTile").card_scene)
 	current_inventory = new_inventory
-	
+
 func set_grid_from_inventory(inv:Array[PackedScene]):
 	clear_inventory_grid()
 	for i in range(0, inv.size()):

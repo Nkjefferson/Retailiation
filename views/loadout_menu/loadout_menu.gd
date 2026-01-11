@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+signal continue_level
 
 # Inputs: Eventually replace this with importing from a linked inventory
 @export var temp_loadout : Array[PackedScene]
@@ -22,22 +23,25 @@ var inventory_focused = false
 
 # Local variables to track tile selections
 var last_selected_tile
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Ensure menu runs over stopped game
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Load values from player
-	#TODO: Replace the "temp" values with the real deal once connected
-	loadout = temp_loadout
+	loadout = GameState.player_loadout
+	player_wallet = GameState.player_currency
+
 	original_loadout = temp_loadout
 	inventory = temp_inventory
 	original_inventory = temp_inventory
-	player_wallet = temp_starting_gold
-	
+
 	# Initialize various elements of screen
 	set_hotkey_labels()
 	set_action_bar_loadout(loadout)
 	set_grid_from_inventory(inventory)
 	player_gold_display.text = str(player_wallet)
-	
+
 	# Connect Signals
 	for ability_card in $Layout/Hotbar.get_children():
 		# Connect the selection panel to the hotbar tiles
@@ -45,7 +49,7 @@ func _ready():
 		ability_card.get_node("SelectableTile").connect("sig_give",_give_card_to_tile)
 		# Connect the info viewer to the hotbar tiles
 		ability_card.get_node("SelectableTile").connect("sig_take",$Layout/HBoxContainer/InfoViewer._set_card)
-		
+
 	# Connect the SelectionPanel to the Shop
 	shop_panel.connect("sig_sell",_sell_card)
 	shop_panel.connect("sig_update_shop",_connect_shop_elements)
@@ -62,9 +66,10 @@ func set_hotkey_labels():
 		i+=1
 
 func set_action_bar_loadout(ldt:Array[PackedScene]):
-	for i in range(0,ldt.size()):
+	#TODO: Update how the loadout menu enumerates, this is dumb
+	for i in range(1,ldt.size()):
 		if ldt[i]:
-			$Layout/Hotbar.get_node("Hotbar_Tile" + str(i+2)).get_node("SelectableTile").set_card(ldt[i])
+			$Layout/Hotbar.get_node("Hotbar_Tile" + str(i+1)).get_node("SelectableTile").set_card(ldt[i])
 
 # Functions to manage the inventory grid
 func set_grid_from_inventory(inv:Array[PackedScene]):
@@ -105,7 +110,7 @@ func _sell_card():
 		last_selected_tile = null
 		shop_panel.add_card_to_store(tile.card_scene)
 		tile.set_card(null)
-		# Update inventory array, and then remove the clean up grid 
+		# Update inventory array, and then remove the clean up grid
 		sync_inventory_grid()
 
 func _connect_shop_elements():
@@ -148,6 +153,18 @@ func add_card_to_inventory_grid():
 		inventory.append($CurrentSelectionPanel.card_scene)
 		set_grid_from_inventory(inventory)
 
+func save_state() -> void:
+	# Save currency state
+	GameState.player_currency = player_wallet
+	# Update new loadout
+	var i = 1
+	for slot in $Layout/Hotbar.get_children():
+		var new_card : PackedScene = null
+		if !slot.get_node("SelectableTile").is_empty():
+			new_card = slot.get_node("SelectableTile").card_scene
+		GameState.player_loadout[i] = new_card
+		i+=1
+
 func _on_accept_button_pressed():
 	# Remove everything in the store's inventory and add the value to the players
 	# cash money
@@ -163,3 +180,8 @@ func _on_inventory_panel_mouse_entered():
 
 func _on_inventory_panel_mouse_exited():
 	inventory_focused = false
+
+func _on_continue_button_pressed() -> void:
+	save_state()
+	continue_level.emit()
+	queue_free()

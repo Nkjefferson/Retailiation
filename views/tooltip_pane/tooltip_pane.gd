@@ -6,12 +6,15 @@ extends Control
 @onready var texture_rect = $PanelContainer/VBoxContainer/HBoxContainer/TextureRect
 @onready var title = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Title
 @onready var texture_labels = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer
+@onready var subtitles = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/SubtitleContainer
 
+var added_paragraphs : Array[Label] = []
+var enabled : bool = false
 
 func set_texture(texture:Texture,frame_count:int=1):
 	if texture:
 		if texture_rect.texture is AtlasTexture:
-			texture_rect.texture.queue_free()
+			texture_rect.texture = null
 		if frame_count == 1:
 			texture_rect.texture = texture
 		else:
@@ -33,12 +36,13 @@ func set_title(title_text:String):
 func add_subtitle(subtitle_text:String):
 	var label = Label.new()
 	label.text = subtitle_text
-	texture_labels.add_child(label)
+	subtitles.add_child(label)
 
 func add_paragraph(paragraph_text:String):
 	var label = Label.new()
 	label.text = paragraph_text
 	top_level_vertical_container.add_child(label)
+	added_paragraphs.append(label)
 
 func get_width():
 	return panel_container.get_size().x
@@ -48,3 +52,15 @@ func get_height():
 
 func move(move_vector:Vector2):
 	panel_container.position += move_vector
+
+func clear():
+	panel_container.position = Vector2(0,0)
+	texture_rect.texture = null
+	title.text = ""
+	for subtitle in subtitles.get_children():
+		subtitle.queue_free()
+	for p in added_paragraphs:
+		p.queue_free()
+	added_paragraphs.clear()
+	self.visible = false
+	self.enabled = false

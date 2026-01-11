@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dfyijfd4fcofb"]
 
-[ext_resource type="Script" path="res://characters/enemies/basic_enemy/BasicEnemy.gd" id="1_nccpe"]
-[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_akc4h"]
+[ext_resource type="Script" uid="uid://cemrpnhe31ri4" path="res://characters/enemies/basic_enemy/BasicEnemy.gd" id="1_nccpe"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://views/damage_taken.tres" id="2_akc4h"]
 [ext_resource type="Texture2D" uid="uid://bplic2rbc5ijp" path="res://assets/art/entities/enemy_nerd.png" id="2_qifdd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmj3p"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c1g6c6bf2rtfe"]
 
-[ext_resource type="Script" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
+[ext_resource type="Script" uid="uid://d0bfd1lgyny5b" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
 [ext_resource type="FontFile" uid="uid://tqxi1opp0xpn" path="res://assets/fonts/Minecraft.ttf" id="2_5colf"]
 [ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="2_7xjn2"]
 [ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="2_jklyp"]
@@ -118,7 +118,7 @@ vertical_alignment = 1
 [node name="HealthBar3" type="ProgressBar" parent="HUD"]
 visible = false
 custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 510.0

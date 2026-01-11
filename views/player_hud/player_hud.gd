@@ -14,6 +14,8 @@ func set_hotkey_labels():
 
 func set_action_bar_loadout(loadout:Array[CardSlot]):
 	for i in range(0,loadout.size()):
+		# Clear the space first to clean up anything that may have been lingering
+		actionbar.get_node("ActionButton" + str(i+1)).clear()
 		if loadout[i]:
 			actionbar.get_node("ActionButton" + str(i+1)).set_card(loadout[i].card)
 
@@ -24,10 +26,10 @@ func _update_card_hotbar(index, count):
 func _update_health_value(health):
 	#healthbar.text = str(health) + "%"
 	healthbar.health = health
-	
+
 func _update_score(score):
 	$HUD/ScoreTicker/Value.text = str(score)
-	
+
 func _update_gold(gold):
 	$HUD/CurrencyTicker/Value.text = str(gold)
 
