@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dylnam6cwbvcg"]
 
-[ext_resource type="Script" path="res://views/loadout_menu/selectable_tile/selectable_tile.gd" id="1_r47wr"]
+[ext_resource type="Script" uid="uid://nu6jfdp3qie6" path="res://views/loadout_menu/selectable_tile/selectable_tile.gd" id="1_r47wr"]
 
 [node name="SelectableTile" type="Control"]
 layout_mode = 3

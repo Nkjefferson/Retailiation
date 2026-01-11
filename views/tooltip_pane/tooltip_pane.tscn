@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crhd1dqsv6w31"]
 
-[ext_resource type="Script" path="res://views/tooltip_pane/tooltip_pane.gd" id="1_itnu2"]
+[ext_resource type="Script" uid="uid://coh168uu44j5a" path="res://views/tooltip_pane/tooltip_pane.gd" id="1_itnu2"]
 [ext_resource type="Theme" uid="uid://ci7slv8tiyyad" path="res://assets/themes/transluscent_panel_theme.tres" id="2_jev1k"]
 
 [node name="TooltipPane" type="Control"]
@@ -33,3 +33,6 @@ size_flags_horizontal = 0
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "This is a test title"
+
+[node name="SubtitleContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2

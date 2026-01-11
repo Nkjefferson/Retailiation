@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b1e2cvc3n1cvy"]
 
-[ext_resource type="Script" path="res://views/hud_elements/display_tile/display_tile.gd" id="1_f63hx"]
+[ext_resource type="Script" uid="uid://cg4pepnwhfm7r" path="res://views/hud_elements/display_tile/display_tile.gd" id="1_f63hx"]
 
 [node name="DisplayTile" type="Control"]
 layout_mode = 3

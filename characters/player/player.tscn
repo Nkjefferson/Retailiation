@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://c50gxclw2vawf"]
 
-[ext_resource type="Script" path="res://characters/player/player.gd" id="1_gu78s"]
-[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="1_qxqmn"]
+[ext_resource type="Script" uid="uid://dbb5k5pmxl1m" path="res://characters/player/player.gd" id="1_gu78s"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://views/damage_taken.tres" id="1_qxqmn"]
 [ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="2_wm45i"]
 [ext_resource type="AudioStream" uid="uid://kdaumpa4un3b" path="res://assets/audio/sound_effects/Death.wav" id="3_0bchg"]
 [ext_resource type="Texture2D" uid="uid://dcqacyqjpo4b4" path="res://assets/art/entities/shopping_player.png" id="3_2q8vt"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jl7ft"]
 shader = ExtResource("1_qxqmn")
-shader_parameter/DamageTaken = null
+shader_parameter/DamageTaken = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho52k"]
 atlas = ExtResource("3_2q8vt")
