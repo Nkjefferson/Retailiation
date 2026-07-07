@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c06n4r8c3dgrm"]
+[gd_resource type="TileSet" format=3 uid="uid://c06n4r8c3dgrm"]
 
 [ext_resource type="Texture2D" uid="uid://dgfjjuca3dviv" path="res://assets/art/environment/bookshelves.png" id="1_u3ci2"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c25kk0nrqwixa"]
+[gd_resource type="TileSet" format=3 uid="uid://c25kk0nrqwixa"]
 
 [ext_resource type="Texture2D" uid="uid://bnqe0ax8bvgbs" path="res://assets/art/environment/Magic_The_Scattering_Shop_Tileset.png" id="1_jed8j"]
 

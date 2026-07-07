@@ -9,6 +9,7 @@ func _get(property: StringName):
 		return entity
 	if property == 'spawn_weight':
 		return spawn_weight
+	return false
 
 func _set(property: StringName, value):
 	if property == 'entity':
@@ -32,4 +33,3 @@ func _get_property_list():
 		}
 	)
 	return props
-
