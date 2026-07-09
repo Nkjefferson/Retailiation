@@ -4,6 +4,7 @@ var default_throw_sound : Resource = preload("res://assets/audio/sound_effects/C
 var default_wall_hit_sound : Resource = preload("res://assets/audio/sound_effects/Card_Hit_Wall.wav")
 var default_enemy_hit_sound : Resource = preload("res://assets/audio/sound_effects/card_hit_enemy.wav")
 
+var database_available : bool = false
 var card_dict = {}
 var cards = {}
 
@@ -27,6 +28,7 @@ func _ready():
 			current_card["Enemy_Hit_Sound"],
 			current_card["Sprite"]
 			)
+		database_available = true
 	else:
 		printerr("Failed to load card database")
 
@@ -90,4 +92,29 @@ func get_card_by_name(card:String) -> CardInfo:
 		return cards[card]
 	else:
 		printerr("Failed to retrieve card from database: ",card)
+		return null
+
+# Return a sub-dictionary containing all cards of a specific rarity or rarities
+func get_cards_by_rarity(rarities: Array[Rarity.CardRarity]):
+	if rarities.size() < 1:
+		printerr("Must request at least one rarity type")
+		return null
+	if database_available:
+		var output = {}
+		for key in cards.keys():
+			if cards[key].rarity in rarities:
+				output[key] = cards[key]
+		return output
+	else:
+		printerr("Database not initialized")
+		return null
+
+# Return a sub-dictionary containing all non-basic cards
+func get_all_nonbasic_cards():
+	if database_available:
+		var output = {}
+		output = get_cards_by_rarity([Rarity.CardRarity.COMMON, Rarity.CardRarity.UNCOMMON, Rarity.CardRarity.RARE])
+		return output
+	else:
+		printerr("Database not initialized")
 		return null
