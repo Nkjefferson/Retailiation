@@ -70,6 +70,7 @@ func get_random_card_from_dict(dict : Dictionary) -> CardInfo:
 
 func _on_restock_button_pressed() -> void:
 	select_cards()
+	$ShopPane.initialize(shop_cards[0].item, shop_cards[0].value)
 
 func _on_exit_shop_button_pressed() -> void:
 	pass # Replace with function body.

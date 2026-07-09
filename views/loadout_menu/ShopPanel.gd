@@ -1,3 +1,5 @@
+# NOTE: At least for now, this is deprecated, as the "loadout menu" is not currently being used.
+# see shop_menu and related panels for most up-to-date display technologies
 extends Panel
 
 signal sig_sell

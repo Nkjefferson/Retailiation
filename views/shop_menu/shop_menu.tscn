@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://ducu4axfgcewa" path="res://views/shop_menu/shop_menu.gd" id="1_a7mrb"]
 [ext_resource type="TileSet" uid="uid://bqmdqei7wwmr5" path="res://assets/tilesets/floor_tile_set.tres" id="1_h2sxf"]
 [ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_dwa6q"]
+[ext_resource type="PackedScene" uid="uid://bqiykt8gmnfl1" path="res://views/shop_menu/shop_pane/shop_pane.tscn" id="4_a7mrb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mi230"]
+font_size = 95
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi230"]
 atlas = ExtResource("2_dwa6q")
@@ -83,6 +87,26 @@ offset_right = 179.0
 offset_bottom = 127.0
 text = "Restock Cards"
 
+[node name="WIP" type="Label" parent="ColorRect - Shop Window" unique_id=2104466397]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 301.0
+offset_right = 315.0
+offset_bottom = 425.0
+text = "WIP"
+label_settings = SubResource("LabelSettings_mi230")
+horizontal_alignment = 1
+
+[node name="WIP2" type="Label" parent="ColorRect - Shop Window" unique_id=27971868]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 300.0
+offset_right = 762.0
+offset_bottom = 430.0
+text = "WIP"
+label_settings = SubResource("LabelSettings_mi230")
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1616062347]
 anchors_preset = -1
 anchor_left = 0.8726562
@@ -110,6 +134,12 @@ label_settings = SubResource("LabelSettings_dwa6q")
 [node name="ExitShopButton" type="Button" parent="VBoxContainer" unique_id=622599024]
 layout_mode = 2
 text = "Leave"
+
+[node name="ShopPane" parent="." unique_id=1296599847 instance=ExtResource("4_a7mrb")]
+offset_left = 405.0
+offset_top = 127.0
+offset_right = 405.0
+offset_bottom = 172.0
 
 [connection signal="pressed" from="ColorRect - Shop Window/RestockButton" to="." method="_on_restock_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitShopButton" to="." method="_on_exit_shop_button_pressed"]
